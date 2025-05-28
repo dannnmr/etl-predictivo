@@ -1,0 +1,21 @@
+# Entornos
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Notebooks temporales
+.ipynb_checkpoints/
+
+# Datos
+data/cruda/
+data/procesada/
+
+# Logs
+logs/
+*.log
+
+# VSCode
+.vscode/
