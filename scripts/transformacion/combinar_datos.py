@@ -8,6 +8,8 @@ def combinar_todas_las_variables(carpeta: str, output_file: str):
     for archivo in archivos:
         path = os.path.join(carpeta, archivo)
         df = pd.read_csv(path)
+        print(f"Procesando archivo: {archivo}")
+        
 
         # Convertir Timestamp a datetime si existe
         if 'Timestamp' in df.columns:
