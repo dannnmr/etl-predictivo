@@ -11,7 +11,7 @@ def preprocesar_variable(path: str, resample_interval="30min") -> pd.DataFrame:
     df[nombre_archivo] = pd.to_numeric(df[nombre_archivo], errors="coerce")
     df.dropna(subset=[nombre_archivo], inplace=True)
 
-    df["Timestamp"] = pd.to_datetime(df["Timestamp"], dayfirst=True)
+    df["Timestamp"] = pd.to_datetime(df["Timestamp"],errors="coerce")
     df.set_index("Timestamp", inplace=True)
     df = df.sort_index()
     df = df[~df.index.duplicated(keep='first')]

@@ -7,8 +7,7 @@ def limpiar_y_formatear(df: pd.DataFrame, nombre_archivo: str) -> pd.DataFrame:
     if "Timestamp" in df.columns:
         df["Timestamp"] = df["Timestamp"].astype(str).str.replace("Z", "", regex=False)
         df["Timestamp"] = pd.to_datetime(df["Timestamp"], errors="coerce", utc=True)
-        #convierte a d m/y H:M:S
-        df['Timestamp'] = df['Timestamp'].dt.strftime("%d/%m/%Y %H:%M:%S")
+        df["Timestamp"] = df["Timestamp"].dt.tz_convert(None)
 
     # Normalizar Value
     if "Value" in df.columns:
@@ -17,7 +16,8 @@ def limpiar_y_formatear(df: pd.DataFrame, nombre_archivo: str) -> pd.DataFrame:
 
    
     # Reordenar columnas (opcional)
+    #sirve para
     df = df[["Timestamp", "Value"]]
-
+    
     return df
 
