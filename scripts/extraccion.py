@@ -16,14 +16,11 @@ load_dotenv()
 usuario = os.getenv('PI_USERNAME')
 clave = os.getenv('PI_PASSWORD')
 piserver = os.getenv('PI_SERVER')
-tags_str = os.getenv('PI_TAGS')  # TAGS
+tags_str = os.getenv('PI_TAGS')  # TAGS, SON CADA UNA DE LAS VARIABLES SEPARADAS POR COMAS
 
 #url base para la API de PI Web
 base_url = f'https://{piserver}/piwebapi'
 
-#Sirve para registrar la actividad del script
-log_name = datetime.now().strftime("logs/extraccion_%Y%m%d_%H%M%S.log")
-logging.basicConfig(filename=log_name, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # funcion para obtener el webid de un punto especifico
 def obtener_webid(tag_name):
@@ -33,8 +30,7 @@ def obtener_webid(tag_name):
         response.raise_for_status()
         return response.json()['WebId']
     except Exception as e:
-        logging.error(f"[{tag_name}] Error al obtener WebID: {e}")
-        return None
+        return e
 
 
 # funcion para obtener los datos historicos con una fecha de inicio y fin
@@ -53,10 +49,11 @@ def obtener_datos_hist_pag(webid, start, end , max_per_request=800000):
             response = requests.get(url, params=params, auth=HttpNtlmAuth(usuario, clave), verify=False)
             response.raise_for_status()  # Lanza un error si la respuesta no es 200 OK
         except Exception as e:
-            logging.error(f"[{webid}] Error al obtener datos: {e}")
+            return f"Error al obtener datos: {e}"
             break
         items = response.json().get('Items', [])
         if not items:
+            
             break
         all_items.extend(items)
         # Obtener el último timestamp y continuar desde ahí
@@ -75,7 +72,6 @@ def obtener_datos_hist_pag(webid, start, end , max_per_request=800000):
 def guardar_csv(df, tag_name):
     file_path=f"data/cruda/{tag_name}.csv"
     df.to_csv(file_path, index=False)
-    logging.info(f"[{tag_name}] Datos guardados en {file_path}")
     
 def generar_rangos_fechas(start_date_str, end_date_str, delta_dias=15):
     """
@@ -102,7 +98,6 @@ if __name__ == '__main__':
             print(f"Procesando tag: {tag}")
             webid = obtener_webid(tag)
             if not webid:
-                logging.error(f"[{tag}] No se pudo obtener WebID.")
                 continue
 
             rangos = generar_rangos_fechas(start_Time, end_Time, delta_dias=15)
@@ -111,16 +106,14 @@ if __name__ == '__main__':
                 print(f"[{tag}] Consultando rango {rango_inicio} a {rango_fin}")
                 df = obtener_datos_hist_pag(webid, start=rango_inicio, end=rango_fin, max_per_request=50000)
                 if df.empty:
-                    logging.warning(f"[{tag}] No se encontraron datos en el rango {rango_inicio} a {rango_fin}.")
                     continue
                 df_total = pd.concat([df_total, df], ignore_index=True)
             
             if df_total.empty:
-                logging.warning(f"[{tag}] No se encontraron datos en todo el rango especificado.")
+                print(f"[{tag}] No se encontraron datos en todo el rango especificado.")
                 continue
 
             guardar_csv(df_total, tag)
     except Exception as e:
-        logging.error(f"Error en la ejecución del script: {e}")
         print("Error:", e)
 
