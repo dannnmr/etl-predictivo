@@ -1,5 +1,4 @@
 # extract_data.py
-
 import requests
 from requests_ntlm import HttpNtlmAuth
 import pandas as pd
@@ -19,6 +18,7 @@ load_dotenv()
 usuario = os.getenv('PI_USERNAME')
 clave = os.getenv('PI_PASSWORD')
 piserver = os.getenv('PI_SERVER')
+print(usuario)
 
 # URL base para PI Web API
 base_url = f'https://{piserver}/piwebapi'
