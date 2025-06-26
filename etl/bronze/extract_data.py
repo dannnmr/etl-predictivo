@@ -60,11 +60,11 @@ def obtener_datos_hist_pag(webid, start, end, max_per_request=25000):
             items = response.json().get('Items', [])
         except Exception as e:
             print(f"Error al obtener datos de {webid} entre {start} y {end}: {e}")
-            break
+            items = []
 
         # Si no hay más datos, termina la paginación para este subrango
         if not items:
-            break
+            break   
 
         all_items.extend(items)
 
@@ -78,7 +78,7 @@ def obtener_datos_hist_pag(webid, start, end, max_per_request=25000):
     # Convierte a DataFrame solo si hay algo útil
     return pd.DataFrame([
         {'Timestamp': i['Timestamp'], 'value': i['Value']}
-        for i in all_items if i.get('Value') is not None
+        for i in all_items 
     ])
 
 
@@ -95,3 +95,5 @@ def generar_rangos_fechas(start, end, delta_dias=15):
         current_start = current_end + timedelta(milliseconds=1)
 
     return rangos
+
+

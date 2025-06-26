@@ -18,5 +18,4 @@ try:
         print("Database connection successful.")
 except Exception as e:
     print(f"Error connecting to the database: {e}")
-    
 
