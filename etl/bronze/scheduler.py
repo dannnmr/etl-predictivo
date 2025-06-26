@@ -7,7 +7,7 @@ from datetime import datetime
 import logging
 import os
 
-logging.basicConfig(filename="./logs/etl_bronze.log", level=logging.INFO)
+logging.basicConfig(filename="logs/etl_bronze.log", level=logging.INFO)
 
 def main():
     start_time = '2024-09-09T00:00:00'
