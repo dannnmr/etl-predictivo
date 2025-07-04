@@ -39,7 +39,6 @@ for archivo in os.listdir(input_folder):
 # Paso 3: combinar
 combinado = combinar_todas_las_variables(formatted_folder, output_file)
 df_combined = pd.read_csv(output_file, index_col=0, parse_dates=True)
-df_combined = filtrar_datos(df_combined)
 
 # Exportar dataset limpio y filtrado
 df_combined.to_csv('data/procesada/combined_data_ready.csv', date_format='%Y-%m-%d %H:%M:%S')

@@ -1,8 +1,8 @@
 # etl/bronze/main.py
 
-from etl.capa_bronze.config import TAGS, START_TIME, END_TIME
-from etl.capa_bronze.extract import obtener_webid, generar_rangos_fechas, obtener_datos_hist_pag
-from etl.capa_bronze.storage import leer_ultimo_timestamp, guardar_parquet_append
+from config import TAGS, START_TIME, END_TIME
+from extract import obtener_webid, generar_rangos_fechas, obtener_datos_hist_pag
+from storage import leer_ultimo_timestamp, guardar_parquet_append
 import pandas as pd
 # main.py
 

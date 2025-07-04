@@ -2,8 +2,7 @@
 
 import os
 import pandas as pd
-from etl.capa_bronze.config import BRONZE_DIR
-
+from config import BRONZE_DIR
 
 def get_parquet_path(tag_alias):
     return os.path.join(BRONZE_DIR, f"{tag_alias}.parquet")
@@ -25,6 +24,7 @@ def leer_ultimo_timestamp(tag_alias):
 
 def guardar_parquet_append(df_nuevo, tag_alias):
     file_path = get_parquet_path(tag_alias)
+    print(f"Guardando datos para {tag_alias} en {file_path}")
     if os.path.exists(file_path):
         try:
             df_existente = pd.read_parquet(file_path, engine='pyarrow')
