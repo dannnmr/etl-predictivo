@@ -1,3 +1,4 @@
+import os
 # variables que se usan para la extraccion de datos de los transformadores
 
 TAGS = {
@@ -13,6 +14,10 @@ TAGS = {
     "voltaje": "TR1.Voltage (phase - ground) HV Ph 2",
 }
 
-START_TIME = "2024-09-09T00:00:00"
-END_TIME = "2025-06-25T00:00:00"
-BRONZE_DIR = "data/bronze/transformador"
+START_TIME = "2024-09-10T00:00:00"
+END_TIME = "2025-06-30T00:00:00"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BRONZE_DIR = os.path.join(BASE_DIR, "..", "..", "data", "bronze")
+BRONZE_DIR = os.path.abspath(BRONZE_DIR)
+
