@@ -20,16 +20,16 @@ VARIABLES_CONTINUAS = [
     "voltaje",
     "corriente_carga",
     "temperatura_aceite",
-    "temperatura_ambiente"
-]
-
-VARIABLES_CRITICAS = [
+    "temperatura_ambiente",
     "temperatura_punto_caliente",
     "temperatura_burbujeo"
 ]
+
+# VARIABLES_CRITICAS = [
+# ]
 
 VARIABLES_DISCRETAS = [
     "tap_position"
 ]
 
-TODAS_LAS_VARIABLES = VARIABLES_CONTINUAS + VARIABLES_CRITICAS + VARIABLES_DISCRETAS
+TODAS_LAS_VARIABLES = VARIABLES_CONTINUAS + VARIABLES_DISCRETAS
