@@ -22,7 +22,8 @@ VARIABLES_CONTINUAS = [
     "temperatura_aceite",
     "temperatura_ambiente",
     "temperatura_punto_caliente",
-    "temperatura_burbujeo"
+    "temperatura_burbujeo",
+    "potencia_aparente",
 ]
 
 # VARIABLES_CRITICAS = [
