@@ -26,3 +26,5 @@ def guardar_en_postgresql(df: pd.DataFrame, nombre_tabla: str, conn_str: str):
         print(f"[INFO] Datos cargados en PostgreSQL: tabla {nombre_tabla}")
     except Exception as e:
         print(f"[ERROR] No se pudo guardar en PostgreSQL: {e}")
+        
+
