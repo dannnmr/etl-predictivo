@@ -10,6 +10,9 @@ from datetime import timedelta
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 load_dotenv()
+"""
+
+"""
 
 # Configuraciones desde .env
 USUARIO = os.getenv('PI_USERNAME')
