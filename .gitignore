@@ -15,6 +15,12 @@ data/cruda/
 data/procesada/
 data/formateada/
 data/bronze/
+zzz/bronze/
+zzz/cruda/
+zzz/procesada/
+zzz/formateada/
+
+data/
 
 # Logs
 logs/
@@ -22,6 +28,14 @@ logs/
 
 # VSCode
 .vscode/
+
+#web
+frontend/   
+
+#node_modules
+node_modules/
+
+# Build outputs
 
 #Dockerfiles
 
