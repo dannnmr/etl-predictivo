@@ -44,8 +44,9 @@ LIMITES = {
     "temperatura_ambiente": {"min": 0},
     "temperatura_punto_caliente": {"min":0, "max": 105},
     "temperatura_burbujeo": {"min": 0},
-    "potencia_aparente": {"min": 0},
+    "potencia_aparente": {"min": 10}, #cambiada
     "tap_position": {"min": 0, "max": 17},
+    "corriente_carga": {"min": 270}, #cambiamos de 0 a 270
 }  
 
 
@@ -68,7 +69,6 @@ VOLTAJE_NOMINAL={
     16:200750,
     17:198000,
 } 
-220438.37474716618
 DESVIACION_VOLTAJE = 0.05  # 5% de desviación aceptable para voltaje
 
 

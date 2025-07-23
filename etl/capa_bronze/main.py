@@ -4,7 +4,7 @@ from config import TAGS, START_TIME, END_TIME
 from extract import obtener_webid, generar_rangos_fechas, obtener_datos_hist_pag
 from storage import leer_ultimo_timestamp, guardar_parquet_append
 import pandas as pd
-# main.py
+
 
 """Este script se encarga de extraer datos históricos de un servidor PI, procesarlos y almacenarlos en formato Parquet.
 Se basa en la configuración definida en config.py y utiliza funciones de extract.py y storage.py para realizar las operaciones necesarias."""
