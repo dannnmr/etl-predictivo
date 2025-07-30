@@ -35,11 +35,13 @@ def generar_rangos_fechas(start_date_str, end_date_str, delta_dias=15):
     end_date = pd.to_datetime(end_date_str)
     rangos = []
     current_start = start_date
+    
+    print(f"current: {current_start}, end: {end_date}")
 
     while current_start < end_date:
         current_end = min(current_start + timedelta(days=delta_dias), end_date)
         rangos.append((current_start.isoformat(), current_end.isoformat()))
-        current_start = current_end + timedelta(milliseconds=1)
+        current_start = current_end + timedelta(seconds=1)
 
     return rangos
 

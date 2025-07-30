@@ -19,7 +19,7 @@ def extraer_datos_actualizados(tag_alias, tag_path):
         webid = obtener_webid(tag_path)
         fecha_inicio = leer_ultimo_timestamp(tag_alias)
         if fecha_inicio:
-            fecha_inicio += pd.Timedelta(milliseconds=1)
+            fecha_inicio += pd.Timedelta(seconds=1)
             print(f"Reanudando desde {fecha_inicio} para {tag_alias}")
         else:
             fecha_inicio = pd.to_datetime(START_TIME)

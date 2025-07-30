@@ -14,8 +14,8 @@ TAGS = {
     "voltaje": "TR1.Voltage (phase - ground) HV Ph 2",
 }
 
-START_TIME = "2024-09-10T00:00:00"
-END_TIME = "2025-06-30T00:00:00"
+START_TIME = "2024-09-10T00:00:00Z"
+END_TIME = "2025-07-10T00:00:00Z"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BRONZE_DIR = os.path.join(BASE_DIR, "..", "..", "data", "bronze")

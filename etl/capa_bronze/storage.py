@@ -16,7 +16,12 @@ def leer_ultimo_timestamp(tag_alias):
         df = pd.read_parquet(file_path, engine='pyarrow')
         if df.empty:
             return None
-        return pd.to_datetime(df['timestamp']).max()
+        df['timestamp'] = pd.to_datetime(df['timestamp'], errors="coerce")
+        timestamp_max = df['timestamp'].max()
+        timestamp_max = timestamp_max.floor('s')
+        print(timestamp_max)
+        return timestamp_max
+        return timestamp_max
     except Exception as e:
         print(f"[ERROR] al leer parquet de {tag_alias}: {e}")
         return None
